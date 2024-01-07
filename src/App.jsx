@@ -1,6 +1,7 @@
 import "./App.css";
 import { DataGridPro } from "@mui/x-data-grid-pro";
 import CustomAutoComplete from "./components/CustomAutoComplete";
+import { Chip } from "@mui/material";
 
 function App() {
   const columns = [
@@ -19,6 +20,10 @@ function App() {
       field: "options",
       headerName: "Option",
       renderEditCell: (params) => <CustomAutoComplete {...params} />,
+      renderCell: (params) =>
+        params.value.map((item, index) => {
+          return <Chip key={index} variant="outlined" label={item.name} />;
+        }),
       editable: true,
       flex: 1,
     },
@@ -29,37 +34,37 @@ function App() {
       id: 1,
       lastName: "Snow",
       firstName: "Jon",
-      options: { id: 1, name: "Option 1" },
+      options: [{ id: 1, name: "Option 1" }],
     },
     {
       id: 2,
       lastName: "Lannister",
       firstName: "Cersei",
-      options: { id: 1, name: "Option 1" },
+      options: [{ id: 1, name: "Option 1" }],
     },
     {
       id: 3,
       lastName: "Lannister",
       firstName: "Jaime",
-      options: { id: 1, name: "Option 1" },
+      options: [{ id: 1, name: "Option 1" }],
     },
     {
       id: 4,
       lastName: "Stark",
       firstName: "Arya",
-      options: { id: 1, name: "Option 1" },
+      options: [{ id: 1, name: "Option 1" }],
     },
     {
       id: 5,
       lastName: "Targaryen",
       firstName: "Daenerys",
-      options: { id: 1, name: "Option 1" },
+      options: [{ id: 1, name: "Option 1" }],
     },
     {
       id: 6,
       lastName: "Melisandre",
       firstName: null,
-      options: { id: 1, name: "Option 1" },
+      options: [{ id: 1, name: "Option 1" }],
     },
   ];
 
