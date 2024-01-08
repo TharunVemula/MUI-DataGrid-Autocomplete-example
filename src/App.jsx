@@ -70,7 +70,19 @@ function App() {
 
   return (
     <>
-      <DataGridPro rows={rows} columns={columns} />
+      <DataGridPro
+        rows={rows}
+        columns={columns}
+        experimentalFeatures={{ newEditingApi: true }}
+        processRowUpdate={(changed, original) => {
+          // TODO: need to call ap call to save data
+          console.log(changed, original);
+          return changed;
+        }}
+        onProcessRowUpdateError={(err) => {
+          console.log(err);
+        }}
+      />
     </>
   );
 }
